@@ -16,7 +16,7 @@ export default function SubmitPage() {
           <input name="race_date" type="date" className="rounded border p-2" />
         </label>
         <label className="flex flex-col gap-1">
-          PR time (minutes:seconds)
+          PR time
           <input name="pr" placeholder="25:30" required className="rounded border p-2" />
         </label>
         <label className="flex flex-col gap-1">
