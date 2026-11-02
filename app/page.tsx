@@ -1,8 +1,13 @@
+import Hero from "@/components/Hero";
+import RecruitCard from "@/components/RecruitCard";
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-8">
-      <h1 className="text-4xl font-bold">Swimmer Portal</h1>
-      <p className="mt-4 text-lg">Submit your photo and PR to get your graphic.</p>
+    <main className="min-h-screen bg-black text-white">
+      <section className="mx-auto grid max-w-6xl items-center gap-16 px-6 py-20 lg:grid-cols-[1.2fr_1fr]">
+        <Hero />
+        <RecruitCard />
+      </section>
     </main>
   );
 }
