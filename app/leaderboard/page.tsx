@@ -1,9 +1,9 @@
+import { Suspense } from "react";
 import { createClient } from "@supabase/supabase-js";
 import Link from "next/link";
 import { SWIM_EVENTS, formatTime } from "@/lib/events";
 
-
-export default async function LeaderboardPage({
+async function Results({
   searchParams,
 }: {
   searchParams: Promise<{ event?: string }>;
@@ -23,9 +23,7 @@ export default async function LeaderboardPage({
     .order("pr_seconds", { ascending: true });
 
   return (
-    <main className="mx-auto max-w-3xl p-8">
-      <h1 className="text-3xl font-bold">Leaderboard</h1>
-
+    <>
       <nav className="mt-6 flex flex-wrap gap-2">
         {SWIM_EVENTS.map((e) => (
           <Link
@@ -68,6 +66,21 @@ export default async function LeaderboardPage({
           </tbody>
         </table>
       )}
+    </>
+  );
+}
+
+export default function LeaderboardPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ event?: string }>;
+}) {
+  return (
+    <main className="mx-auto max-w-3xl p-8">
+      <h1 className="text-3xl font-bold">Leaderboard</h1>
+      <Suspense fallback={<p className="mt-6 text-zinc-500">Loading results...</p>}>
+        <Results searchParams={searchParams} />
+      </Suspense>
     </main>
   );
 }
